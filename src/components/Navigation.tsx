@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, MessageSquare } from "lucide-react";
+import CallOrText from "./CallOrText";
+import { site, SMS_HINT } from "@/lib/site";
 
 const LINKS = [
   { label: "Services", href: "#services" },
@@ -60,13 +62,7 @@ export default function Navigation() {
               {l.label}
             </a>
           ))}
-          <a
-            href="tel:+19737311111"
-            className="group flex items-center gap-2 px-4 py-2 border border-[var(--amber)] text-[var(--amber)] font-mono text-[0.72rem] tracking-[0.16em] uppercase hover:bg-[var(--amber)] hover:text-[var(--void)] transition-colors"
-          >
-            <Phone size={13} strokeWidth={2.2} />
-            (973) 731-1111
-          </a>
+          <CallOrText />
         </div>
 
         <button
@@ -106,12 +102,22 @@ export default function Navigation() {
                   {l.label}
                 </motion.a>
               ))}
-              <a
-                href="tel:+19737311111"
-                className="mt-8 flex items-center gap-3 font-mono text-[0.8rem] tracking-[0.16em] text-[var(--amber)]"
-              >
-                <Phone size={16} /> (973) 731-1111
-              </a>
+              <div className="mt-8 flex flex-col gap-3">
+                <a
+                  href={site.phoneHref}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 font-mono text-[0.8rem] tracking-[0.16em] text-[var(--amber)]"
+                >
+                  <Phone size={16} /> {site.phone}
+                </a>
+                <a
+                  href={site.smsHref}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center gap-3 font-mono text-[0.72rem] tracking-[0.16em] text-[var(--ink-soft)] hover:text-[var(--amber)] transition-colors"
+                >
+                  <MessageSquare size={16} /> {SMS_HINT}
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import { Phone, ArrowDown } from "lucide-react";
 import Tachometer from "./Tachometer";
+import CallOrText from "./CallOrText";
 
 const line1 = ["We", "find", "what's"];
 const line2 = ["actually", "wrong."];
@@ -105,13 +106,7 @@ export default function Hero() {
             transition={{ delay: 1.2, duration: 0.7 }}
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a
-              href="tel:+19737311111"
-              className="flex items-center gap-2.5 px-6 py-3.5 bg-[var(--amber)] text-[var(--void)] font-mono text-[0.78rem] tracking-[0.12em] uppercase hover:bg-[var(--amber-hi)] transition-colors"
-            >
-              <Phone size={15} strokeWidth={2.4} />
-              Call the shop
-            </a>
+            <CallOrText variant="pair" />
             <a
               href="#services"
               onClick={(e) => scrollTo(e, "#services")}

@@ -1,6 +1,7 @@
 "use client";
 
-import { Phone } from "lucide-react";
+import { Phone, MessageSquare } from "lucide-react";
+import { site } from "@/lib/site";
 
 const LINKS = [
   { label: "Services", href: "#services" },
@@ -29,9 +30,14 @@ export default function Footer() {
               Full-service auto repair on South Jefferson Street in the City of Orange, NJ.
               Diagnosed right, fixed once.
             </p>
-            <a href="tel:+19737311111" className="mt-6 inline-flex items-center gap-2.5 font-mono text-[0.8rem] tracking-[0.1em] text-[var(--amber)] hover:text-[var(--amber-hi)] transition-colors">
-              <Phone size={15} /> (973) 731-1111
-            </a>
+            <div className="mt-6 flex flex-col items-start gap-2.5">
+              <a href={site.phoneHref} className="inline-flex items-center gap-2.5 font-mono text-[0.8rem] tracking-[0.1em] text-[var(--amber)] hover:text-[var(--amber-hi)] transition-colors">
+                <Phone size={15} /> {site.phone}
+              </a>
+              <a href={site.smsHref} className="inline-flex items-center gap-2.5 font-mono text-[0.72rem] tracking-[0.1em] text-[var(--ink-soft)] hover:text-[var(--amber)] transition-colors">
+                <MessageSquare size={15} /> Text a photo of the problem
+              </a>
+            </div>
           </div>
 
           <div>

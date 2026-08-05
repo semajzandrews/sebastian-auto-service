@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { MapPin, Phone, Car } from "lucide-react";
+import CallOrText from "./CallOrText";
+import { site } from "@/lib/site";
 
 export default function Visit() {
   const ref = useRef<HTMLElement>(null);
@@ -40,12 +42,14 @@ export default function Visit() {
               <Phone size={20} className="text-[var(--amber)] mt-0.5 shrink-0" />
               <div>
                 <div className="font-mono text-[0.62rem] tracking-[0.2em] uppercase text-[var(--muted)] mb-1.5">Phone</div>
-                <a href="tel:+19737311111" className="text-[var(--ink)] hover:text-[var(--amber)] transition-colors text-[1.1rem]">
-                  (973) 731-1111
+                <a href={site.phoneHref} className="text-[var(--ink)] hover:text-[var(--amber)] transition-colors text-[1.1rem]">
+                  {site.phone}
                 </a>
                 <p className="text-[var(--muted)] text-[0.82rem] mt-1.5">
-                  Call ahead for current hours and to talk through what your car is doing.
+                  Call ahead for current hours, or text a photo of what your car is doing and
+                  we will tell you what we see.
                 </p>
+                <CallOrText variant="pair" tone="outline" className="mt-4" />
               </div>
             </div>
 
